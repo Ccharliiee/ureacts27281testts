@@ -3,8 +3,19 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import HelloWorld from "./components/HelloWorld";
+import Todos from "./components/Todos";
 
-function App() {
+export default function App() {
+  const dummyTodo = [
+    {
+      id: new Date().toISOString() + "id1",
+      todoText: "tstodotext1",
+    },
+    {
+      id: new Date().toISOString() + "id2",
+      todoText: "tstodotext2",
+    },
+  ];
   return (
     <div className="App">
       <header className="App-header">
@@ -22,8 +33,7 @@ function App() {
         </a>
       </header>
       <HelloWorld />
+      <Todos todos={dummyTodo} />
     </div>
   );
 }
-
-export default App;
