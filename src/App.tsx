@@ -4,6 +4,7 @@ import "./App.css";
 
 import HelloWorld from "./components/HelloWorld";
 import Todos from "./components/Todos";
+import CreateTodo from "./components/CreateTodo";
 
 export default function App() {
   const dummyTodo = [
@@ -33,6 +34,7 @@ export default function App() {
         </a>
       </header>
       <HelloWorld />
+      <CreateTodo />
       <Todos todos={dummyTodo} />
     </div>
   );
