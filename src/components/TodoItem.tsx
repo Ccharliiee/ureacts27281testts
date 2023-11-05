@@ -1,5 +1,5 @@
-const TodoItem: React.FC<{ todoText: string }> = (props) => {
-  return <li>{props.todoText}</li>;
+const TodoItem: React.FC<{ todoText: string }> = ({ todoText }) => {
+  return <li>{todoText}</li>;
 };
 
 export default TodoItem;
