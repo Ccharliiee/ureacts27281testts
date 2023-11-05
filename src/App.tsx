@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
 import HelloWorld from "./components/HelloWorld";
 import Todos from "./components/Todos";
 import CreateTodo from "./components/CreateTodo";
+import { Todo } from "./components/udtypes/todostypes";
 
 export default function App() {
   const dummyTodo = [
@@ -17,6 +18,19 @@ export default function App() {
       todoText: "tstodotext2",
     },
   ];
+
+  const [todos, setTodos] = useState<Todo[]>(dummyTodo);
+
+  const addTodoHandler = (todoText: string) => {
+    setTodos((prevTodos) => {
+      return prevTodos.concat({
+        id:
+          new Date().toISOString() + "id" + Math.floor(Math.random() * 100) + 3,
+        todoText,
+      });
+    });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -34,8 +48,8 @@ export default function App() {
         </a>
       </header>
       <HelloWorld />
-      <CreateTodo />
-      <Todos todos={dummyTodo} />
+      <CreateTodo onAddTodo={addTodoHandler} />
+      <Todos todos={todos} />
     </div>
   );
 }
