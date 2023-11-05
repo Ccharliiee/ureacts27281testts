@@ -22,13 +22,17 @@ export default function App() {
   const [todos, setTodos] = useState<Todo[]>(dummyTodo);
 
   const addTodoHandler = (todoText: string) => {
-    setTodos((prevTodos) => {
-      return prevTodos.concat({
+    setTodos((prevTodos) =>
+      prevTodos.concat({
         id:
           new Date().toISOString() + "id" + Math.floor(Math.random() * 100) + 3,
         todoText,
-      });
-    });
+      })
+    );
+  };
+
+  const deleteTodoByIdHandler = (todoId: string) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== todoId));
   };
 
   return (
@@ -49,7 +53,7 @@ export default function App() {
       </header>
       <HelloWorld />
       <CreateTodo onAddTodo={addTodoHandler} />
-      <Todos todos={todos} />
+      <Todos todos={todos} onDeleteTodo={deleteTodoByIdHandler} />
     </div>
   );
 }
